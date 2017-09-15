@@ -30,7 +30,7 @@ def download_many(cc_list):
 
 def asin_to_mongo():
     from_db = list(pymg('amazon_results_url',name).find({'status':2}))
-    print('待采集',len(from_db))
+    print('todo:',len(from_db))
     def kk(data):
         data['_id'] = str(data['_id'])
         return data
