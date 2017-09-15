@@ -68,5 +68,5 @@ def down_one(data):
     url_coll.update({'_id': ObjectId(data['_id'])}, {'$set':{'status':4}})
     client.close()
 
-    print('成功:',data['_id'])
+    print('suss:',data['_id'])
 # down_one('https://www.amazon.com/s/ref=sr_pg_2?rh=n%3A1055398%2Ck%3Amermaid+tail+blanket&page=2&keywords=mermaid+tail+blanket&ie=UTF8')
