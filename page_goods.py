@@ -17,29 +17,31 @@ def pymg(highest,collections,port=MONGO_URI):
     return collections
 
 def get_price_img(xhtml1):
-    title = 'title'
-    store_name = 'store_name'
-    price = ''
+    # title = 'title'
+    # store_name = 'store_name'
+    # price = ''
+
     # try:
     #     title = xhtml1.xpath('.//a/h2/text()')[0]
     #     # store_name = xhtml1.xpath('.//div[@class="a-row a-spacing-small"]/div[@class="a-row a-spacing-none"]/span[2]/text()')[0]
     #     price = [x for x in xhtml1.xpath('.//a/span/text()') if '$' in x][0]
     # except:
     #     pass
-    img = xhtml1.xpath('.//div/a/img/@src')[0]
+
+    # img = xhtml1.xpath('.//div/a/img/@src')[0]
 
     asin = xhtml1.xpath('.//@data-asin')[0]
     data = {
         'asin': asin,
-        'price': price,
-        'img': img,
-        'title': title,
-        'store_name': store_name,
-        'brand': 'false',
-        'status': -2
+        # 'price': price,
+        # 'img': img,
+        # 'title': title,
+        # 'store_name': store_name,
+        # 'brand': 'false',
+        'status': 0
     }
-    if store_name.lower() in title.lower():
-        data['brand'] = 'true'
+    # if store_name.lower() in title.lower():
+    #     data['brand'] = 'true'
     return data
 def get_singel_page_goods(html1):
     result_list = html.fromstring(html1).xpath('//li[starts-with(@id,"result_")]')
@@ -65,8 +67,11 @@ def down_one(data):
     coll.insert_many(asins)
 
     url_coll = client['amazon_results_url'][name]
-    url_coll.update({'_id': ObjectId(data['_id'])}, {'$set':{'status':4}})
+    url_coll.update({'_id': ObjectId(data['_id'])}, {'$set':{'status':1}})
     client.close()
 
     print('suss:',data['_id'])
 # down_one('https://www.amazon.com/s/ref=sr_pg_2?rh=n%3A1055398%2Ck%3Amermaid+tail+blanket&page=2&keywords=mermaid+tail+blanket&ie=UTF8')
+
+
+

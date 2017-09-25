@@ -11,7 +11,7 @@ def pymg(highest,collections,port=MONGO_URI):
     collections = zhihu[collections]
     return collections
 def path_url():
-    path = "/Users/user/work/链接/2.txt"
+    path = "/Users/user/Downloads/url.txt"
     with open(path,'r') as f:
         fr = f.readlines()
         # [print(x.strip()) for x in fr]

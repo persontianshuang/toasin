@@ -20,7 +20,7 @@ def pymg(highest,collections,port=MONGO_URI):
 # for x in pp.find():
 #     pp.update({'_id':x['_id']},{'$set':{'status':0}})
 
-MAX_WORKER =50
+MAX_WORKER = 60
 
 def download_many(cc_list):
     print('download_many')
@@ -29,7 +29,7 @@ def download_many(cc_list):
         executor.map(down_one,cc_list)
 
 def asin_to_mongo():
-    from_db = list(pymg('amazon_results_url',name).find({'status':2}))
+    from_db = list(pymg('amazon_results_url',name).find({'status':0}))
     print('todo:',len(from_db))
     def kk(data):
         data['_id'] = str(data['_id'])
